@@ -12,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
         ex) 카페와 빵집
             카페에서는 커피를 팔고, 빵집에서는 빵을 파는데, 필요한 경우 서로 협업 관계를 맺어
             어떤 손님이 커피를 사면 빵을 할인해 줄 수는 있음 -> 계층간 소통
-            그런데 빵집 점원이 커피를 서빙해줄 수는 없음.
+            그런데 빵집 점원이 커피를 서빙해줄 수는 없음
 
         스프링 부트에서의 계층
             1) 프레젠테이션(Presentation)
