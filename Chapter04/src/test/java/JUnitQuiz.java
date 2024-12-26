@@ -49,17 +49,17 @@ public class JUnitQuiz {
         int number2 = 0;
         int number3 = -5;
 
-        // 세 변수가 각각 양수, 0, 음수인지 확인하는 코드
+        // 세 변수가 각각 양수, 0, 음수인지 확인하는 코드.
         assertThat(number1).isPositive();
 
         assertThat(number2).isZero();
 
         assertThat(number3).isNegative();
 
-        // number1이 number2 보다 큰 값인지 확인
+        // number1이 number2 보다 큰 값인지 확인.
         assertThat(number1).isGreaterThan(number2);
 
-        // number3가 number2 보다 작은지 확인
+        // number3가 number2 보다 작은지 확인.
         assertThat(number3).isLessThan(number2);
 
 
