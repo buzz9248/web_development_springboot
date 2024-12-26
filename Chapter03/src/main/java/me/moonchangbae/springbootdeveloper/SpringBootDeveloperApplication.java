@@ -100,6 +100,25 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
     작동 확인--------------------------------------------------------
 
+        01 단계 - resources 폴더에 sql 문 하나 추가
+            resources -> data.sql
+
+        02 단계 - 이제는 기존에 만들어둔 application.yml 파일 수정
+
+        03 단계 - 서버 실행 후에 ctrl + f 눌러서 create 검색해서 table 생성됐는지 확인
+
+        04 단계 - Postman 에서 HTTP 요청을 시도
+            1) 포스트맨 실행
+            2) HTTP 메서드를 GET 으로 설정하고 url에
+                http://localhost:8080/test 로 설정(TestController.java 확인)
+            3) SEND 클릭
+            4) 200 OK 확인
+
+    HTTP 요청 ---> TestController <----> TestService <----> MemberRepository <----> Database
+    url:/test----> 프레젠테이션 계층     비지니스 계층      퍼시스턴스 계층         데이터베이스
+
+    chapter04 프로젝트 생성
+
 
  */
 
