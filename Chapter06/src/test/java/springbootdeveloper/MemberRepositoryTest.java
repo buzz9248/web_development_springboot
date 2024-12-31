@@ -1,4 +1,4 @@
-package me.moonchangbae.springbootdeveloper;
+package springbootdeveloper;
 /*
     MemberRepositoryTest 를 만들었지만, 데이터 조회를 위해서
     입력된 데이터가 필요하기 때문에 테스트용 데이터를 추가할 예정
@@ -12,6 +12,8 @@ package me.moonchangbae.springbootdeveloper;
 
  */
 
+import me.moonchangbae.springbootdeveloper.Member;
+import me.moonchangbae.springbootdeveloper.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
