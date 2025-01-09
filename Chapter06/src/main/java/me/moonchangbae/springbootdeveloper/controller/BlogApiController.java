@@ -3,12 +3,13 @@ package me.moonchangbae.springbootdeveloper.controller;
 import lombok.RequiredArgsConstructor;
 import me.moonchangbae.springbootdeveloper.domain.Article;
 import me.moonchangbae.springbootdeveloper.dto.AddArticleRequest;
+import me.moonchangbae.springbootdeveloper.dto.ArticleResponse;
 import me.moonchangbae.springbootdeveloper.service.BlogService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -70,6 +71,59 @@ public class BlogApiController {
                     test 를 이용할 예정
 
 
+
      */
+
+    @GetMapping("/api/articles")
+    public ResponseEntity<List<ArticleResponse>> findAllArticles() {
+        List<ArticleResponse> articles = blogService.findAll()
+                .stream()
+                .map(ArticleResponse::new)
+                .toList();
+
+        return ResponseEntity.ok().body(articles);
+    }
+
+    /*
+        /api/articles GET 요청이 들어오면 글 전체를 조회하는 findAll() 메서드를 호출
+        -> 다음 응답용 객체인 ArticleResponse 로 파싱해서 body 에 담아
+        클라이언트에게 전송합니다 -> 해당 코드에서는 stream 을 적용했습니다 -> 추후 설명
+
+
+        * stream : 여러 데이터가 모여 있는 컬렉션을 간편하게 처리하기 위해서 사용하는 기능
+            자바 8에 추가.
+
+     */
+
+    @GetMapping("/api/articles/{id}")
+    // URL 경로에서 값을 추출
+    public ResponseEntity<ArticleResponse> findArticle(@PathVariable long id) { // URL 에서 {id} 에 해당하는 값이 id로 들어옴
+        Article article = blogService.findById(id);
+
+        return ResponseEntity.ok()
+                .body(new ArticleResponse(article));
+    }
+    /*
+        @PathVariable : URL 에서 값을 가져오는 애너테이션.
+            /api/articles/3 GET 요청을 받으면 id 에 3이 argument 로 들어오게 됩니다.
+            그리고 이 값은 바로 전에 만든 서비스 클래스의 findById() 메서드로 넘어가서 3번 블로그
+            글을 찾아옵니다. 그리고 그 글을 찾으면 3번 글의 정보(제목/내용)을 body 에 담아서
+            웹브라우저로 가져 옵니다.
+
+     */
+
+    @DeleteMapping("/api/articles/{id}")
+    public ResponseEntity<Void> deleteArticle(@PathVariable long id) {
+        blogService.delete(id);
+
+        return ResponseEntity.ok()
+                .build();
+
+    }
+    /*
+        @PathVariable 통해서 {id}에 해당하는 값이 들어옴.
+     */
+
+
 
 }
