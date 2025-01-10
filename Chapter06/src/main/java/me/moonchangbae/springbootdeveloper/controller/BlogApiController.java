@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import me.moonchangbae.springbootdeveloper.domain.Article;
 import me.moonchangbae.springbootdeveloper.dto.AddArticleRequest;
 import me.moonchangbae.springbootdeveloper.dto.ArticleResponse;
+import me.moonchangbae.springbootdeveloper.dto.UpdateArticleRequest;
 import me.moonchangbae.springbootdeveloper.service.BlogService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -123,6 +124,20 @@ public class BlogApiController {
     /*
         @PathVariable 통해서 {id}에 해당하는 값이 들어옴.
      */
+
+    @PutMapping("/api/articles/{id}")
+    public ResponseEntity<Article> updateArticle(@PathVariable long id, @RequestBody UpdateArticleRequest request) {
+        Article updateArticle = blogService.update(id, request);
+
+        return ResponseEntity.ok().body(updateArticle);
+    }
+    /*
+        /api/articles/{id} PUT 요청이 들어오면 Request Body 정보가 request 로 넘어옵니다.
+        그리고 다시 서비스 클래스의 update() 메서드에 id 와 request 를 넘겨줍니다.
+        응답 값은 body 에 담아 전송합니다.
+     */
+
+
 
 
 
