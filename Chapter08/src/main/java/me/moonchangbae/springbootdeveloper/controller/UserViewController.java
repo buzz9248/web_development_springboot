@@ -24,4 +24,7 @@ public class UserViewController {
         resources > templates > login.html 생성
      */
 
+    // 로그아웃 관련
+
+
 }
