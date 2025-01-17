@@ -11,7 +11,6 @@ package me.ahngeunsu.springbootdeveloper.controller;
     Then
         - 응답 코드가 201 Created 인지 확인하고, 응답으로 온 액세스 토큰이
         비어있지 않은지 확인
-
  */
 
 import com.fasterxml.jackson.databind.ObjectMapper;
